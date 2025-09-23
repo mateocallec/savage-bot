@@ -7,6 +7,19 @@ This project adheres to [Semantic Versioning](https://semver.org/).
 
 ---
 
+## [1.1.1] - 2025-09-25
+### Added
+- New playful and trash-talk messages added to `messages.json`
+- Minor stylistic improvements to existing messages
+
+### Fixed
+- Corrected orthography in messages
+
+### Changed
+- Updated `messages.json` to improve readability and consistency
+
+---
+
 ## [1.1.0] - 2025-09-24
 ### Added
 - Docker support for containerized deployment
