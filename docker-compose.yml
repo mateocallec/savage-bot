@@ -9,9 +9,6 @@ services:
       - TOKEN=${TOKEN}
       - NODE_ENV=production
       - TZ=UTC
-    volumes:
-      - .:/app
-      - /app/node_modules
     restart: unless-stopped
     network_mode: bridge
 
