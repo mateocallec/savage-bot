@@ -1,0 +1,15 @@
+{
+  "name": "savage-bot",
+  "version": "1.0.0",
+  "description": "A fun Discord bot that automatically replies with savage messages.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "Matéo Florian Callec",
+  "license": "MIT",
+  "dependencies": {
+    "discord.js": "^14.22.1",
+    "dotenv": "^17.2.2"
+  }
+}
