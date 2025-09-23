@@ -7,6 +7,25 @@ This project adheres to [Semantic Versioning](https://semver.org/).
 
 ---
 
+## [1.1.0] - 2025-09-24
+### Added
+- Docker support for containerized deployment
+- `scripts/` folder with `build.sh`, `start.sh`, `stop.sh`, `pull.sh`, `push.sh`, and `entrypoint.sh`
+- Automatic container restart policy on crash
+- `.env` support for configuration: `THRESHOLD` and `ACTIVITY`
+- Links to `docs/terms.md` and `docs/privacy.md` in README
+- Updated README with detailed Docker setup instructions
+
+### Fixed
+- N/A
+
+### Changed
+- Replaced `config.json` usage with `.env` variables
+- Refactored `index.js` to use environment variables instead of `config.json`
+- README.md updated to reflect new Docker workflow and legal documentation
+
+---
+
 ## [1.0.0] - 2025-09-23
 ### Added
 - Initial release of Savage Bot

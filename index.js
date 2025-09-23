@@ -35,10 +35,10 @@ function pickRandom(arr) {
     return arr[Math.floor(Math.random() * arr.length)];
 }
 
-// ---------- Load Configuration & Messages ----------
+// ---------- Load Messages & Environment Config ----------
 
-const config = loadJSON('./config.json');
-const MESSAGES_THRESHOLD = config.threshold || 100;
+const MESSAGES_THRESHOLD = parseInt(process.env.THRESHOLD, 10) || 100;
+const BOT_ACTIVITY = process.env.ACTIVITY || "👀";
 const responses = loadJSON('./messages.json');
 
 // ---------- Create Client ----------
@@ -88,7 +88,7 @@ async function handleMessage(message) {
 client.once("ready", async () => {
     console.log(`Connected as ${client.user.tag}`);
     client.user.setPresence({
-        activities: [{ name: config.activity || "👀" }],
+        activities: [{ name: BOT_ACTIVITY }],
         status: "online"
     });
 

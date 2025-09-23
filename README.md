@@ -1,6 +1,6 @@
 # Savage Bot
 
-Savage Bot is a Discord bot that replies automatically to messages in a server and allows users to send playful or trash-talk messages via a slash command.
+Savage Bot is a French Discord bot that replies automatically to messages in a server and allows users to send playful or trash-talk messages via a slash command.
 
 ---
 
@@ -10,7 +10,7 @@ Savage Bot is a Discord bot that replies automatically to messages in a server a
 This is the main script for Savage Bot.  
 It handles:
 
-- Loading configuration (`config.json`) and responses (`messages.json`).
+- Loading responses from `messages.json` and configuration from environment variables (`.env`).
 - Connecting to Discord with required intents.
 - Counting messages and replying automatically when the threshold is reached.
 - Handling the `/trashtalk @username` slash command.
@@ -40,26 +40,25 @@ Example:
 
 ---
 
-### `config.json`
+### `.env`
 
-Holds bot configuration:
+Holds bot configuration variables:
 
-```json
-{
-  "threshold": 5,
-  "activity": "Watching the chat 👀"
-}
+```
+TOKEN=YOUR_BOT_TOKEN_HERE
+THRESHOLD=5
+ACTIVITY=Watching the chat 👀
 ```
 
-* **threshold**: Number of messages before the bot automatically replies.
-* **activity**: Status shown under the bot’s presence in Discord.
+* **TOKEN**: Your Discord bot token.
+* **THRESHOLD**: Number of messages before the bot automatically replies.
+* **ACTIVITY**: Status shown under the bot’s presence in Discord.
 
 ---
 
 ### `CHANGELOG.md`
 
 Tracks the history of changes, updates, and bug fixes for Savage Bot.
-Refer to this file to see what’s new in each version.
 
 ---
 
@@ -76,22 +75,74 @@ Contact: **[mateo@callec.net](mailto:mateo@callec.net)**
 
 ---
 
+### `DISCLAIMER.md`
+
+Details about liability and usage of Savage Bot.
+See this file for more information.
+
+---
+
+### `docs/terms.md`
+
+The [Terms of Service](./docs/terms.md) for using Savage Bot.
+
+---
+
+### `docs/privacy.md`
+
+The [Privacy Policy](./docs/privacy.md) explaining data usage.
+(Note: Savage Bot does **not** fetch or store any personal information.)
+
+---
+
 ## Setup
 
 1. Clone this repository.
-2. Create a `.env` file in the root folder with your bot token:
-
-```
-TOKEN=YOUR_BOT_TOKEN_HERE
-```
-
-Alternatively, set the `TOKEN` variable in your environment variables.
-
+2. Create a `.env` file in the root folder with your bot token, threshold, and activity.
 3. Run the setup script to install dependencies:
 
 ```bash
 scripts/setup.sh
 ```
+
+---
+
+## Docker Setup
+
+Savage Bot is fully containerized and can run in Docker with automatic restart on crash.
+
+1. Build the Docker image:
+
+```bash
+scripts/build.sh
+```
+
+2. Pull the public Docker image (optional):
+
+```bash
+scripts/pull.sh
+```
+
+Docker image is available at: [mateocallec/savage-bot](https://hub.docker.com/r/mateocallec/savage-bot)
+
+3. Start the bot using Docker Compose:
+
+```bash
+scripts/start.sh
+```
+
+4. Stop the bot:
+
+```bash
+scripts/stop.sh
+```
+
+### Important Notes
+
+* The bot uses `scripts/entrypoint.sh` or `scripts/startup.sh` inside the container to start.
+* If the bot crashes, the container stops automatically; Docker Compose restart policy handles restarts.
+* All scripts (`build.sh`, `start.sh`, `stop.sh`, `pull.sh`, `push.sh`) are located in the `scripts` folder.
+* Use `.env` or environment variables to configure `TOKEN`, `THRESHOLD`, and `ACTIVITY`.
 
 ---
 
@@ -107,7 +158,7 @@ Make sure you have the required permissions in your server to invite a bot.
 
 ## Usage
 
-* **Automatic replies**: The bot replies every `threshold` messages with a random message from `messages.json`.
+* **Automatic replies**: The bot replies every `THRESHOLD` messages with a random message from `messages.json`.
 * **Slash command**: `/trashtalk @username` sends a trash-talk message mentioning the target user.
 
 ---
