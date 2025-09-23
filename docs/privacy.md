@@ -20,7 +20,7 @@ Savage Bot ("the Bot") respects the privacy of its users. This Privacy Policy ex
 
 - The Bot reads messages **in your Discord server** to provide automated replies.
 - Messages are not saved to any external database or logged permanently.
-- Responses are chosen from the predefined list in `messages.json`.
+- Responses are chosen from the predefined list in [messages.json](https://github.com/mateocallec/Discord-Savage-Bot/blob/main/messages.json).
 
 ---
 
