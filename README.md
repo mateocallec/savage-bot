@@ -1,6 +1,6 @@
 # Savage Bot
 
-<img src="https://github.com/mateocallec/Discord-Savage-Bot/blob/main/docs/profile.png?raw=true" alt="Profile" style="height: 100px;" />
+<img src="https://github.com/mateocallec/savage-bot/blob/main/docs/profile.png?raw=true" alt="Profile" style="height: 100px;" />
 
 Savage Bot is a French Discord bot that replies automatically to messages in a server and allows users to send playful or trash-talk messages via slash commands.
 All messages and configurations are **user-defined per server**.
