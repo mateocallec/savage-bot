@@ -9,7 +9,7 @@ echo "🚀 Starting Savage Bot..."
 
 # Run the bot with Node.js
 # Exit if Node.js process crashes
-node /app/index.js
+node src/index.js
 
 EXIT_CODE=$?
 echo "❌ Savage Bot exited with code $EXIT_CODE"

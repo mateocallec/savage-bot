@@ -1,0 +1,7 @@
+{
+    "ACTIVITY": "I’m watching you when you sleep 👀",
+    "THRESHOLD": 50,
+    "TERMS_URI": "https://github.com/mateocallec/Discord-Savage-Bot/wiki/Terms-of-Use",
+    "PRIVACY_URI": "https://github.com/mateocallec/Discord-Savage-Bot/wiki/Privacy-Policy",
+    "MESSAGE_LIMIT": 50
+}

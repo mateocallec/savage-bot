@@ -2,62 +2,75 @@
 
 **Effective Date:** 2025-09-23
 
-Savage Bot ("the Bot") respects the privacy of its users. This Privacy Policy explains what information is (and is not) collected when using the Bot and how it is handled.
+Savage Bot ("the Bot") respects the privacy of its users. This Privacy Policy explains what information is collected, stored, and how it is handled when using the Bot.
 
 ---
 
-## 1. No Personal Information Collected
+## 1. Information Collected
 
-- Savage Bot does **not intentionally collect, store, or share personal information**.
-- The Bot only accesses minimal data provided by Discord to function correctly:
-  - Display names (if using `{user}` in messages)
-  - User IDs (temporarily, to send replies and slash command messages)
-- No messages, passwords, or other private user data are stored externally.
+Savage Bot collects and stores only what is necessary for its functionality:
+
+* **User-added messages:** Messages added via `/addmessage` and used for commands like `/trashtalk`.
+* **Server configuration:** Per-server thresholds, terms, and privacy URIs.
+* **User information:** Display names and Discord IDs are temporarily used for message personalization (e.g., `{user}` in `/trashtalk`).
+
+No external personal information (emails, passwords, DMs) is collected or shared.
 
 ---
 
-## 2. Message Handling
+## 2. Message Storage and Handling
 
-- The Bot reads messages **in your Discord server** to provide automated replies.
-- Messages are not saved to any external database or logged permanently.
-- Responses are chosen from the predefined list in [messages.json](https://github.com/mateocallec/Discord-Savage-Bot/blob/main/messages.json).
+* Messages are stored locally on the host server in each server's storage folder (e.g., `./storage/servers/<guildId>/messages.json`).
+* Server configuration is stored in `config.json`.
+* Messages are used only to generate automated replies and interactive commands like `/trashtalk`.
+* The `/export` command allows server administrators to download all stored messages and configuration in a JSON file.
 
 ---
 
 ## 3. Use of Environment Variables
 
-- The Bot requires a Discord token (`TOKEN`) stored in `.env` or as an environment variable.
-- This token is used to authenticate with Discord and is **never shared**.
+* Discord token (`TOKEN`) is required to authenticate the Bot.
+* Optional environment variables like `THRESHOLD`, `TERMS_URI`, and `PRIVACY_URI` can configure default behavior.
+* Tokens and environment variables are **never shared** or stored externally by the Bot.
 
 ---
 
 ## 4. Third-Party Services
 
-- Savage Bot uses the Discord API to operate.
-- Any data sent to Discord is subject to Discord’s own privacy policies.
+* Savage Bot uses the Discord API to operate.
+* Any data sent to Discord (messages, user mentions) is subject to Discord’s privacy policies.
 
 ---
 
 ## 5. Security
 
-- The Bot does not transmit personal information outside the Discord platform.
-- The developer is not responsible for security breaches or misuse of the Bot by server administrators or members.
+* All stored data resides **locally on the host server**.
+* The developer is **not responsible** for server misconfiguration, security breaches, or misuse by administrators or members.
+* Server administrators are responsible for access control and management of exported JSON files.
 
 ---
 
-## 6. Changes to Privacy Policy
+## 6. Retention and Deletion
 
-The developer may update this Privacy Policy at any time. Continued use of the Bot constitutes acceptance of any changes.
+* Messages and server configuration remain stored locally until manually deleted or reset.
+* Administrators can delete all messages using `/reset` or remove specific messages with `/deletemessage`.
+* The `/export` command allows administrators to back up all stored messages and configuration.
 
 ---
 
-## 7. Contact
+## 7. Changes to Privacy Policy
 
-If you have any questions about privacy or data handling:
+The developer may update this Privacy Policy at any time. Continued use of Savage Bot constitutes acceptance of any changes.
 
-**Matéo Florian Callec**  
+---
+
+## 8. Contact
+
+For questions or concerns about privacy or data handling:
+
+**Matéo Florian Callec**
 Email: [mateo@callec.net](mailto:mateo@callec.net)
 
 ---
 
-**Savage Bot is designed for fun and does not track or store user information beyond what is needed to operate within Discord.**
+**Savage Bot stores only user-added messages and server configuration required for its operation. No external personal data is collected.**

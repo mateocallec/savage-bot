@@ -2,43 +2,39 @@
 
 <img src="https://github.com/mateocallec/Discord-Savage-Bot/blob/main/docs/profile.png?raw=true" alt="Profile" style="height: 100px;" />
 
-Savage Bot is a French Discord bot that replies automatically to messages in a server and allows users to send playful or trash-talk messages via a slash command.
+Savage Bot is a French Discord bot that replies automatically to messages in a server and allows users to send playful or trash-talk messages via slash commands.
+All messages and configurations are **user-defined per server**.
 
 ---
 
 ## Files
 
 ### `index.js`
-This is the main script for Savage Bot.  
+
+The main entry point for Savage Bot.
 It handles:
 
-- Loading responses from `messages.json` and configuration from environment variables (`.env`).
-- Connecting to Discord with required intents.
-- Counting messages and replying automatically when the threshold is reached.
-- Handling the `/trashtalk @username` slash command.
-- Error handling for permissions or failed message sending.
+* Connecting to Discord with the required intents.
+* Counting messages per server and replying automatically when the threshold is reached.
+* Handling slash commands like `/trashtalk`, `/addmessage`, `/listmessages`, `/reset`, `/deletemessage`, `/threshold`, `/export`, and `/info`.
+* Error handling for permissions and failed message sending.
 
 Key features:
 
-- Replaces `{user}` in messages with the display name of the target user.
-- Fallback to simple message if the bot cannot `reply()`.
+* Replaces `{user}` in messages with the display name of the target user.
+* Stores messages and server configuration **locally per server**.
+* Allows exporting all server messages and settings via `/export`.
 
 ---
 
-### `messages.json`
-Contains an array of messages that the bot can send.  
-Example:
+### `server storage`
 
-```json
-[
-  "Hello {user}!",
-  "You're unstoppable, {user}!",
-  "Watch out, {user}!"
-]
-````
+All user-added messages and server configuration are stored **per server** in the `./storage/servers/<guildId>/` folder:
 
-* `{user}` will be replaced by the target user’s display name.
-* You can add, remove, or modify messages freely.
+* `messages.json` – Stores messages added by server members.
+* `config.json` – Stores server-specific settings like message threshold, terms URI, and privacy URI.
+
+> All message content is **defined by users**, not preloaded.
 
 ---
 
@@ -50,11 +46,14 @@ Holds bot configuration variables:
 TOKEN=YOUR_BOT_TOKEN_HERE
 THRESHOLD=5
 ACTIVITY=Watching the chat 👀
+TERMS_URI=https://yourwebsite.com/terms
+PRIVACY_URI=https://yourwebsite.com/privacy
 ```
 
 * **TOKEN**: Your Discord bot token.
-* **THRESHOLD**: Number of messages before the bot automatically replies.
+* **THRESHOLD**: Default number of messages before automatic reply.
 * **ACTIVITY**: Status shown under the bot’s presence in Discord.
+* **TERMS\_URI** & **PRIVACY\_URI**: Optional; can override server-specific links.
 
 ---
 
@@ -66,7 +65,7 @@ Tracks the history of changes, updates, and bug fixes for Savage Bot.
 
 ### `CONTRIBUTE.md`
 
-Guidelines for contributing to Savage Bot, including how to submit bug fixes, new features, or improvements.
+Guidelines for contributing to Savage Bot, including submitting bug fixes or new features.
 
 ---
 
@@ -86,32 +85,38 @@ See this file for more information.
 
 ### `docs/terms.md`
 
-The [Terms of Service](./docs/terms.md) for using Savage Bot.
+[Terms of Service](./docs/terms.md) for using Savage Bot.
 
 ---
 
 ### `docs/privacy.md`
 
-The [Privacy Policy](./docs/privacy.md) explaining data usage.
-(Note: Savage Bot does **not** fetch or store any personal information.)
+[Privacy Policy](./docs/privacy.md) explaining data usage.
+Savage Bot **only stores messages and configuration necessary for its operation**, no external personal data is collected.
 
 ---
 
 ## Setup
 
 1. Clone this repository.
-2. Create a `.env` file in the root folder with your bot token, threshold, and activity.
-3. Run the setup script to install dependencies:
+2. Create a `.env` file in the root folder with your bot token, threshold, activity, and optional URIs.
+3. Install dependencies:
 
 ```bash
-scripts/setup.sh
+npm install
+```
+
+4. Start the bot:
+
+```bash
+node src/index.js
 ```
 
 ---
 
 ## Docker Setup
 
-Savage Bot is fully containerized and can run in Docker with automatic restart on crash.
+Savage Bot is containerized and can run in Docker:
 
 1. Build the Docker image:
 
@@ -125,8 +130,6 @@ scripts/build.sh
 scripts/pull.sh
 ```
 
-Docker image is available at: [mateocallec/savage-bot](https://hub.docker.com/r/mateocallec/savage-bot)
-
 3. Start the bot using Docker Compose:
 
 ```bash
@@ -139,43 +142,48 @@ scripts/start.sh
 scripts/stop.sh
 ```
 
-### Important Notes
-
-* The bot uses `scripts/entrypoint.sh` or `scripts/startup.sh` inside the container to start.
-* If the bot crashes, the container stops automatically; Docker Compose restart policy handles restarts.
-* All scripts (`build.sh`, `start.sh`, `stop.sh`, `pull.sh`, `push.sh`) are located in the `scripts` folder.
-* Use `.env` or environment variables to configure `TOKEN`, `THRESHOLD`, and `ACTIVITY`.
+> The bot uses `scripts/entrypoint.sh` or `scripts/startup.sh` inside the container to start.
+> Use `.env` or environment variables to configure settings.
 
 ---
 
 ## Adding the Bot to Your Server
 
-You can add Savage Bot to your Discord server using this link:
+[Invite Savage Bot](https://discord.com/oauth2/authorize?client_id=1420071359538528409&permissions=3941734153713728&scope=bot)
 
-[Invite Savage Bot](https://discord.com/oauth2/authorize?client_id=1420071359538528409&permissions=3941734153713728&integration_type=0&scope=bot)
-
-Make sure you have the required permissions in your server to invite a bot.
+Make sure you have permissions to invite a bot.
 
 ---
 
 ## Usage
 
-* **Automatic replies**: The bot replies every `THRESHOLD` messages with a random message from `messages.json`.
-* **Slash command**: `/trashtalk @username` sends a trash-talk message mentioning the target user.
+* **Automatic replies**: The bot replies every `THRESHOLD` messages with a random message added by users.
+* **Slash commands**:
+
+  * `/trashtalk @username` – Send a trash-talk message to a user.
+  * `/addmessage` – Add a new message to the server storage.
+  * `/listmessages` – List all messages stored for the server.
+  * `/reset` – Delete all stored messages.
+  * `/deletemessage` – Delete a specific message by ID.
+  * `/threshold` – Set or view the server message threshold.
+  * `/export` – Export messages and server configuration as JSON.
+  * `/info` – Show GitHub, Terms, and Privacy links.
+
+> All messages are **user-defined** and managed per server.
 
 ---
 
 ## Disclaimer
 
 Savage Bot is designed for fun.
-I am **not responsible** if anyone is harmed, offended, or affected by the messages sent by the bot.
+The developer is **not responsible** if anyone is harmed, offended, or affected by messages sent by the bot.
 See [DISCLAIMER.md](./DISCLAIMER.md) for more information.
 
 ---
 
 ## License
 
-See the [LICENSE](./LICENSE) file for more information.
+See [LICENSE](./LICENSE) for more information.
 
 ---
 

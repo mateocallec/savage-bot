@@ -7,6 +7,34 @@ This project adheres to [Semantic Versioning](https://semver.org/).
 
 ---
 
+## [2.0.0] - 2025-09-26
+### Added
+- Fully user-managed messages per server; no `messages.json` preloaded.
+- Server-specific storage for messages and configuration (`./storage/servers/<guildId>/`).
+- New slash commands for managing server messages:
+  - `/addmessage` – Add new message.
+  - `/listmessages` – List all messages in the server.
+  - `/reset` – Delete all server messages.
+  - `/deletemessage` – Delete a specific message by ID.
+  - `/threshold` – View or update message threshold.
+  - `/export` – Export messages and configuration as JSON.
+  - `/info` – Show GitHub, Terms, and Privacy links.
+- Configurable Terms of Use and Privacy Policy per server.
+- README updated to reflect user-managed messages system.
+- Legal files updated: `docs/terms.md` and `docs/privacy.md`.
+
+### Fixed
+- Removed dependency on predefined `messages.json`.
+- Fixed automatic replies to use server-stored messages.
+
+### Changed
+- Refactored `index.js` and commands to support server-specific storage.
+- Deprecated old messages system; all content now user-defined.
+- `.env` variables for `THRESHOLD`, `ACTIVITY`, `TERMS_URI`, and `PRIVACY_URI` now optional with server fallback.
+- README and documentation updated to match new architecture.
+
+---
+
 ## [1.1.1] - 2025-09-25
 ### Added
 - New playful and trash-talk messages added to `messages.json`
