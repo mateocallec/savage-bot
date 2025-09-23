@@ -19,13 +19,14 @@ Savage Bot is intended for **entertainment and fun** purposes only. Its features
 - Automated message replies every set number of messages.
 - Slash command `/trashtalk @username` for playful or humorous interactions.
 
-You agree to use the Bot responsibly and avoid harassment, abuse, or actions that violate Discord's Terms of Service.
+You agree to use the Bot responsibly and avoid harassment, abuse, or actions that violate Discord's Terms of Service.  
+**All server members must be explicitly aware that the Bot is a joke, and nothing should be taken personally. The developer is not responsible for any negative effects the Bot may have on your server.**
 
 ---
 
 ## 3. Content and Messages
 
-- All messages sent by the Bot are **generated from predefined responses** stored in `messages.json`.
+- All messages sent by the Bot are **generated from predefined responses** stored in [messages.json](https://github.com/mateocallec/Discord-Savage-Bot/blob/main/messages.json).
 - The Bot may use playful or trash-talk content. 
 - You acknowledge that messages are **not created by the developer personally for each situation**.
 - The developer does **not guarantee** that messages are appropriate for all users.
@@ -82,4 +83,4 @@ Email: [mateo@callec.net](mailto:mateo@callec.net)
 
 ---
 
-**By using Savage Bot, you acknowledge that you have read and understood these Terms of Service.**
+**By using Savage Bot, you acknowledge that you have read, understood, and agreed that all server members are aware the Bot is a joke, and you accept these Terms of Service.**
