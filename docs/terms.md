@@ -90,7 +90,7 @@ For questions, concerns, or reporting issues, contact the developer:
 
 **Matéo Florian Callec**
 Email: [mateo@callec.net](mailto:mateo@callec.net)
-GitHub: [https://github.com/yourusername](https://github.com/yourusername)
+GitHub: [https://github.com/mateocallec](https://github.com/mateocallec)
 
 ---
 
