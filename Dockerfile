@@ -15,7 +15,7 @@ RUN npm install --production
 COPY . .
 
 # Copy entrypoint script
-COPY scripts/startup.sh /usr/local/bin/entrypoint.sh
+COPY scripts/entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN chmod +x /usr/local/bin/entrypoint.sh
 
 # Run the startup script
