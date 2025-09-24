@@ -27,7 +27,7 @@ No external personal information (emails, passwords, DMs) is collected or shared
 
 ---
 
-## 3. Use of Environment Variables
+## 3. Use of Environment Variables (if you self host the Bot)
 
 * Discord token (`TOKEN`) is required to authenticate the Bot.
 * Optional environment variables like `THRESHOLD`, `TERMS_URI`, and `PRIVACY_URI` can configure default behavior.
