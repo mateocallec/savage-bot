@@ -7,6 +7,17 @@ This project adheres to [Semantic Versioning](https://semver.org/).
 
 ---
 
+## [2.0.1] - 2025-09-27
+### Fixed
+- Resolved Docker-related bugs affecting container startup and deployment
+- Improved stability of Docker build and run scripts
+
+### Changed
+- Cleaned and reorganized documentation for better readability
+- Updated README with clarified instructions for Docker usage and configuration
+
+---
+
 ## [2.0.0] - 2025-09-26
 ### Added
 - Fully user-managed messages per server; no `messages.json` preloaded.
